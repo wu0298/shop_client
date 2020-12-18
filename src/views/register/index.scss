@@ -1,0 +1,31 @@
+.register {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #ececec;
+  &-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.75);
+    background: #fff;
+    width: 600px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 30px 100px;
+    .logo {
+      // height: 50px;
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      cursor: pointer;
+    }
+    .title {
+      text-align: center;
+      font-size: 30px;
+      font-weight: normal;
+    }
+  }
+}

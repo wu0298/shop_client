@@ -1,0 +1,57 @@
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  &_top {
+    background: #fff;
+    .container {
+      cursor: pointer;
+    }
+  }
+  &_main {
+    flex: 1;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  &_video {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+  &_form {
+    width: 488px;
+    // height: 500px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 80px 50px 20px;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%) scale(.63);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    .form_top {
+      position: absolute;
+      top: -20px;
+      right: 0;
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      border-radius: 20px;
+    }
+  }
+}
+
+.login-phone {
+  text-align: center;
+  font-size: 13px;
+  color: #d42c26;
+  cursor: pointer;
+}

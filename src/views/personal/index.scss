@@ -1,0 +1,119 @@
+.container {
+  padding: 20px 10px;
+  .personal {
+    padding: 36px 48px;
+    min-height: 450px;
+    margin: 20px 0;
+    background: #fff;
+  }
+}
+
+.user_info {
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  .avatar {
+    width: 160px;
+    height: 160px;
+    img {
+      width: 100%;
+      border-radius: 50%;
+      padding: 2px;
+      border: 5px solid #e2e2e2;
+    }
+  }
+
+  .info {
+    margin-left: 30px;
+    display: flex;
+    color: #757575;
+  }
+}
+
+.info_left {
+  width: 300px;
+  .name {
+    font-size: 24px;
+    font-weight: 400;
+    color: #616161;
+  }
+  .timer {
+    margin: 10px 0;
+    color: #b0b0b0;
+  }
+}
+
+.info_right {
+  width: 360px;
+  .right_item {
+    padding: 6px 0;
+  }
+}
+.line {
+  border-top: 1px solid #e0e0e0;
+}
+
+.info-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px 0;
+}
+
+.list_item {
+  width: 330px;
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .item_left {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 50%;
+    .iconfont {
+      color: #fff;
+      font-size: 40px;
+    }
+  }
+}
+
+.item_right {
+  width: 180px;
+  .title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .go {
+    font-size: 14px;
+    color: #757575;
+    cursor: pointer;
+    .icon-you1 {
+      font-size: 12px;
+      vertical-align: middle;
+    }
+    &:hover {
+      color: #f76511;
+    }
+  }
+}
+.edit_password {
+  width: 100px;
+  margin-top: 10px;
+  padding: 5px;
+  color: #000;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #3d5ef1;
+  background: #3d5ef1;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    background: #3d5ef1;
+  }
+  &:active {
+    background: #3240c2;
+  }
+}

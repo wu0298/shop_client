@@ -1,0 +1,65 @@
+.wrap {
+  position: relative;
+  .not_address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .tip {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #a19999;
+    }
+  }
+
+  .add_address {
+    position: absolute;
+    right: 0;
+    top: -20px;
+  }
+  .address {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+.box-card {
+  width: 380px;
+  height: 180px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px 0;
+  &:hover {
+    .tip {
+      display: block;
+    }
+  }
+  .tip {
+    position: absolute;
+    right: 0;
+    display: none;
+    top: 10px;
+    span {
+      padding: 0 10px;
+      cursor: pointer;
+      &:hover {
+        color: #e64444;
+      }
+    }
+  }
+}
+.title {
+  font-size: 14px;
+  height: 30px;
+}
+
+.default {
+  position: absolute;
+  width: 75px;
+  text-align: center;
+  color: #fff;
+  background: #cf3333;
+  top: 5px;
+  left: -10px;
+  transform: rotate(-30deg);
+}
