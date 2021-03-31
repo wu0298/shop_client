@@ -14,7 +14,7 @@
     >
       <el-form-item label="发送至" prop="mode">
         <el-radio-group v-model="editForm.mode" @change="handlerChange">
-          <el-radio-button label="phone">手机</el-radio-button>
+          <!-- <el-radio-button label="phone">手机</el-radio-button> -->
           <el-radio-button label="email">邮箱</el-radio-button>
         </el-radio-group>
       </el-form-item>
@@ -22,8 +22,9 @@
       <!-- 验证码 -->
       <el-form-item prop="code" class="item-from">
         <MyCode
+          :email="user.email"
           :mode="editForm.mode"
-          :username="username"
+          :username="user.username"
           :isPass="isPass"
           :code.sync="editForm.code"
         />
@@ -51,7 +52,7 @@
 import { stripScript, validateEmail, validatePhone } from "@/utils/validate";
 import MyCode from "@c/content/code";
 
-import { EditAccount } from "@/api/user";
+import { Verify, EditAccount } from "@/api/user";
 
 export default {
   components: { MyCode },
@@ -77,8 +78,8 @@ export default {
         callback(new Error("请输入密码"));
       } else if (stripScript(value)) {
         callback(new Error("只能是数字、字母和中文组成"));
-      } else if (value.length < 6 || value.length > 20) {
-        callback(new Error("密码长度不能小于6位和超过20位"));
+      } else if (value.length < 3 || value.length > 20) {
+        callback(new Error("密码长度不能小于3位和超过20位"));
       } else {
         callback();
       }
@@ -121,29 +122,29 @@ export default {
       this.$refs.editForm.validate((valid) => {
         // 表单验证通过
         if (valid) {
-          // 修改密码
-          const requestData = {
-            code: this.editForm.code,
-            mode: this.editForm.mode,
-            data: { password: this.editForm.password },
-          };
+          // 参数
+          const data = {"id": this.user.id,
+                        "password": this.editForm.password};
+          delete data.code
 
-          EditAccount(requestData).then((res) => {
-            this.$message({
-              type: "success",
-              message: "修改成功",
-            });
+          Verify({code: this.editForm.code,
+                  username: this.user.username}).then((res) => {
+            // 修改密码
+            if (res.code == 200) {
+              EditAccount(data).then( res => {
+                if (res.code == 200){
+                  this.$message({
+                    showClose: true,
+                    message: "修改成功",
+                    duration: 0,
+                  });
 
-            this.$alert("重新登录", "提示", {
-              confirmButtonText: "确定",
-              callback: (action) => {
-                this.$store.dispatch("user/remove_user");
-                this.$router.push({ name: "login" });
-              },
-            });
+                  this.resetFromData();
+                  this.dialogVisible = false;
+                }
+              })
+            }
           });
-
-          this.resetFromData();
         } else {
           return false;
         }

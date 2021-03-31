@@ -10,7 +10,7 @@
     <div class="personal">
       <div class="user_info">
         <div class="avatar">
-          <img :src="user.avatar" alt="" />
+          <img :src="getUrl(user.avatar)" alt="" />
         </div>
         <div class="info">
           <div class="info_left">
@@ -50,9 +50,11 @@
 
 <script>
 import MyDialog from "@c/common/dialog/passwordDialog";
+import { mixin } from '@/utils/mixin.js'
 
 export default {
   components: { MyDialog },
+  mixins: [mixin],
   data() {
     return {
       user: {},

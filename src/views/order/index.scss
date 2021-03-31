@@ -63,3 +63,35 @@
   transform: scale(.9);
   color: #bb2929;
 }
+.refund{
+  position: absolute;
+  right: 50px;
+  bottom:35px;
+  font-size: 12px;
+  transform: scale(.9);
+  color: #000612;
+  
+  z-index:2;
+  &:hover{
+    background: #ee2222;
+  }
+}
+.yes_refund {
+  position: absolute;
+  right: 50px;
+  bottom: 30px;
+  width: 140px;
+  text-align: center;
+  padding: 10px 14px;
+  color: #fff;
+  background-color: #909399;
+  border: 1px solid #e9e7e7;
+  border-radius: 4px;
+  transform: rotate(-25deg);
+}
+.refund_bg {
+  background: #c24f4f !important;
+}
+.refund_bg_3 {
+  background: #d6c043 !important;
+}

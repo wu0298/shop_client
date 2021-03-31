@@ -20,3 +20,10 @@ export function GetOrder() {
     method: 'get',
   });
 }
+
+export function editOrderStatu(orderId, status){
+  return axios.request({
+    url: `order/${orderId}/${status}`,
+    method:'put'
+  })
+}

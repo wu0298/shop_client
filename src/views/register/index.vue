@@ -137,7 +137,6 @@ export default {
 
           Verify({code: this.registerForm.code,
                   username: this.registerForm.username}).then((res) => {
-            console.log(res)
             // 注册
             if (res.code == 200) {
               Register(data).then((res) => {
@@ -151,6 +150,12 @@ export default {
 
                   this.resetFromData();
                 }
+              });
+            }else{
+              this.$message({
+                showClose: true,
+                message: "验证码有误",
+                duration: 0,
               });
             }
           });

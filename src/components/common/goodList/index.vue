@@ -4,7 +4,7 @@
       <div class="container goods-list">
         <div @click="pushDetail(item.id)" class="goods-item" v-for="(item, index) in goods" :key="index">
           <div class="figure-img">
-            <img height="200" width="200" :src="item.picture" alt="" />
+            <img height="200" width="200" :src="getUrl(item.picture)" alt="" />
           </div>
           <div class="title t_1">{{ item.name }}</div>
           <div class="price">{{ item.price }}元</div>
@@ -32,6 +32,7 @@
 
 <script>
 import { getCategory } from "@/api/base";
+import { mixin } from '@/utils/mixin.js'
 
 export default {
   props: {
@@ -40,6 +41,7 @@ export default {
       default: () => {},
     },
   },
+  mixins: [mixin],
   data() {
     return {
       options: {

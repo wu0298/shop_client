@@ -8,12 +8,13 @@
             >【源绿】的宗旨就是让每个人都能享受绿色健康的美好食物</marquee
           >
         </div>
+        <router-link :to="{ name: 'goodRegister' }" tag="a" class="nav-good">成为商家</router-link>/
         <div class="nav-r">
           <!-- 已登录 -->
           <div v-if="user" class="user">
             <div class="user_info">
-              <img width="30" class="avatar" :src="user.avatar" alt="" />
-              <span class="name">{{ user.name }}</span>
+              <img width="30" class="avatar" :src="getUrl(us.avatar)" alt="" />
+              <span class="name">{{ us.name }}</span>
 
               <div class="info_hover">
                 <div class="hover_item" @click="logout">退出登录</div>
@@ -62,16 +63,19 @@
 <script>
 import TopTabs from "./top-tabs";
 import MySearch from "@c/content/search";
+import { mixin } from '@/utils/mixin.js'
 
 import { mapGetters } from "vuex";
 
 export default {
   components: { TopTabs, MySearch },
   computed: {
-    // ...mapGetters({
-    //   cartLength: "cart/cartLength",
-    // }),
+    ...mapGetters({
+      cartLength: "cart/cartLength",
+      us: "user/getUser"
+    }),
   },
+  mixins: [mixin],
   data() {
     return {
       user: null,
@@ -82,22 +86,23 @@ export default {
     this.isUser();
   },
   watch: {
-    // cartLength: {
-    //   handler(newVal) {
-    //     if (!this.animated) {
-    //       this.animated = true;
-    //       setTimeout(() => {
-    //         this.animated = false;
-    //       }, 300);
-    //     }
-    //   },
-    //   immediate: true,
-    // },
+    cartLength: {
+      handler(newVal) {
+        if (!this.animated) {
+          this.animated = true;
+          setTimeout(() => {
+            this.animated = false;
+          }, 300);
+        }
+      },
+      immediate: true,
+    },
   },
   methods: {
     // 获取 user 用户
     isUser() {
       this.user = this.$store.state.user.user;
+      console.log(this.user);
     },
     /* 退出登录 */
     logout() {
@@ -132,6 +137,11 @@ export default {
   &-marquee {
     color: #b4a078;
     text-decoration: underline;
+  }
+  &-good {
+    position: relative;
+    color: gainsboro;
+    left: -180px;
   }
   &-r {
     color: gainsboro;

@@ -10,17 +10,34 @@ export default {
   getters: {
     // 获取购物车长度
     cartLength(state) {
-      const arr = Object.entries(state.cart.cartMap)
+      // return 0;
+      const arr = []
+      if (state.cart){
+        if(state.cart.cartMap) {
+          console.log("进入了获取长度吗");
+          const arr1 = Object.entries(state.cart.cartMap)
+          arr.push(...arr1)
+        }
+      }
+      // console.log("arr");
+      //将hashmap转换成数组
+      // const arr = Object.entries(state.cart.cartMap)
+      //遍历数组
+      if(!arr.length > 0) return 0
       return arr.reduce((pre, cur) => {
         if (cur[1].product) {
           pre += cur[1].count;
         }
-        console.log(pre);
         return pre;
       }, 0);
     },
     // 获取购物车
     cartList(state) {
+      console.log(state.cart);
+      console.log("未null前，是否执行下一次");
+      if(!state.cart) return []
+      console.log("null后执行");
+      if(!state.cart.cartMap) return []
       return state.cart.cartMap;
     },
   },

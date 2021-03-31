@@ -8,6 +8,9 @@ import config from './modules/config'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  state: {
+    HOST: 'http://localhost:8088/yuanlv',  //文件资源地址
+  },
   modules: {
     user,
     cart,

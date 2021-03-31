@@ -31,7 +31,7 @@
     <div class="phone">
       <div class="top_title">
         <h3 class="title">粮油</h3>
-        <div class="more">查看全部<i class="iconfont icon-you"></i></div>
+        <div class="more" @click="handlerChange(1)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
 
       <div class="phone_show">
@@ -63,7 +63,7 @@
     <div class="phone">
       <div class="top_title">
         <h3 class="title">果蔬</h3>
-        <div class="more">查看全部<i class="iconfont icon-you"></i></div>
+        <div class="more" @click="handlerChange(2)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">
         <div
@@ -94,7 +94,7 @@
     <div class="phone">
       <div class="top_title">
         <h3 class="title">生鲜</h3>
-        <div class="more">查看全部<i class="iconfont icon-you"></i></div>
+        <div class="more" @click="handlerChange(3)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">
         <div
@@ -125,7 +125,7 @@
     <div class="phone">
       <div class="top_title">
         <h3 class="title">肉禽</h3>
-        <div class="more">查看全部<i class="iconfont icon-you"></i></div>
+        <div class="more" @click="handlerChange(4)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">
         <div
@@ -156,7 +156,7 @@
     <div class="phone">
       <div class="top_title">
         <h3 class="title">茶叶</h3>
-        <div class="more">查看全部<i class="iconfont icon-you"></i></div>
+        <div class="more" @click="handlerChange(5)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">
         <div
@@ -245,7 +245,17 @@ export default {
         name: "detail",
         query: { id: id },
       });
-    }
+    },
+    // 选择分类并跳转
+    handlerChange(value) {
+      this.isActive = value;
+
+      // 跳转到分类页面
+      this.$router.push({
+        name: "category",
+        query: { style: value },
+      });
+    },
   },
 };
 </script>
@@ -269,6 +279,7 @@ h3.title {
   background: #fff;
   padding: 0 20px;
   box-sizing: border-box;
+  cursor: pointer;
   .item_conetent {
     text-align: center;
     .title {

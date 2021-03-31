@@ -11,12 +11,11 @@
       <el-form-item>
         <el-upload
           class="avatar-uploader"
-          :action="avatarUrl"
+          :action="avatarUrl(form.id)"
           :show-file-list="false"
-          :http-request="uploadFile"
-          :before-upload="beforeAvatarUpload" :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload" :on-success="uploadAvatarSuccess"
         >
-          <img :src="imgUrl" class="avatar" />
+          <img :src="getUrl(form.avatar)" class="avatar" />
         </el-upload>
       </el-form-item>
 
@@ -72,17 +71,21 @@
 </template>
 
 <script>
-import { getUser } from "@/utils/storage";
-import { Upload, EditUser } from "@/api/user";
+import { getUser, setUser } from "@/utils/storage";
+import { Upload, EditAccount, getUserByToken } from "@/api/user";
+import { mixin } from '@/utils/mixin.js'
 
 import EditCode from "@c/content/code/edit";
 
 export default {
   components: { EditCode },
+  mixins: [mixin],
   data() {
     return {
+      that: "",
       // 表单数据
       form: {
+        id: "",
         name: "",
         email: "",
         phone: "",
@@ -108,9 +111,6 @@ export default {
     };
   },
   computed: {
-    avatarUrl() {
-      return `${process.env.VUE_APP_API}/upload`;
-    },
   },
   watch: {
     emailVal: {
@@ -135,16 +135,24 @@ export default {
       this.imgUrl = this.form.avatar;
     },
     /* 上传头像 */
-    uploadFile(data) {
-      let formdata = new FormData();
-
-      formdata.append("file", data.file);
-      formdata.append("op", "avatar");
-      formdata.append("data", JSON.stringify({}));
-
-      Upload(formdata).then((res) => {
-        this.imgUrl = res.data.imgUrl;
-      });
+    avatarUrl(id) {
+      return `${process.env.VUE_APP_API}/user/uploadAvatar?id=${id}`;
+    },
+    //上传图片成功后执行
+    async uploadAvatarSuccess(res,file){
+      const _this = this //保存父对象的this指向
+      if (res.code == 200) {
+        await getUserByToken().then( res => {
+          setUser(res.data)
+          _this.$store.state.user.user = res.data
+        })
+        _this.initUser()
+      }else{
+        _this.$notify({
+          title: '上传失败',
+          type: 'error'
+        })
+      }
     },
     /* 修改邮箱 */
     editEmail() {},
@@ -154,17 +162,18 @@ export default {
 
       // 只获取昵称和性别、头像
       const data = {
+        id: this.form.id,
         name: this.form.name,
         sex: this.form.sex,
+        phone: this.form.phone,
+        email: this.form.email,
+        autograph: this.form.autograph
       };
-      const isOther = this.imgUrl !== this.form.avatar;
-      if (isOther) data.avatar = this.imgUrl;
 
-      EditUser(data).then((res) => {
-        if (res.statusCode === 200) {
+      EditAccount(data).then((res) => {
+        if (res.code === 200) {
           this.$message("修改成功");
-
-          this.$store.commit("user/SET_USER", this.form);
+          this.$store.commit("user/SET_USER", res.data);
         }
       });
     },

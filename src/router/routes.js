@@ -11,6 +11,11 @@ export default [
     component: () => import("@/views/register"),
   },
   {
+    path: "/goodRegister",
+    name: "goodRegister",
+    component: () => import("@/views/good"),
+  },
+  {
     path: "",
     component: Layout,
     redirect: {

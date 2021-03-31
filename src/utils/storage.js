@@ -19,6 +19,7 @@ export function getToken() {
   return localStorage.getItem(TOKEN);
 }
 export function getCart() {
+  if(!localStorage.getItem(CART)) return null
   return JSON.parse(localStorage.getItem(CART));
 }
 

@@ -38,7 +38,7 @@
               @click="handlerCheck(good.product.id)"
             ></i>
             <div class="w_130 image">
-              <img :src="good.product.picture" alt="" />
+              <img width="141.99px" height="141.99px" :src="getUrl(good.product.picture)" alt="" />
             </div>
             <div class="good_info">
               <div class="name">{{ good.product.name }}</div>
@@ -75,59 +75,6 @@
     </div>
     <div class="good_item">
     
-    <!-- <el-table
-      size="mini"
-      border
-      style="width: 100%"
-      height="550px"
-      :data="userGoods"
-      @selection-change="handleSelectionChange"
-    >
-      <el-table-column type="selection" width="40"></el-table-column>
-      <el-table-column label="商品图片" width="180" align="center">
-        <template slot-scope="scope">
-          <div class="w_130 image">
-            <img :src="scope.row[1].product.picture" style="width: 100%" />
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="商品信息" width="320" align="center">
-        <template slot-scope="scope">
-          <div class="good_info">{{scope.row[1].product.name}}</div>
-        </template>
-      </el-table-column>
-      <el-table-column label="单价" width="120" align="center">
-        <template slot-scope="scope">
-          <div>{{scope.row[1].product.price | fixedPrice}}</div>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="数量" prop="sex" align="center" width="153">
-        <template slot-scope="scope">
-          <el-input-number
-            v-model="scope.row[1].count"
-            size="mini"
-            @change="handleChange(good.product.id, good.count)"
-            :min="1"
-            :max="99"
-          ></el-input-number>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="金额" width="120" align="center">
-        <template slot-scope="scope">
-          <div>{{scope.row[1].subtotal | fixedPrice}}</div>
-        </template>
-      </el-table-column>
-
-      <el-table-column label="操作" width="125" align="center">
-        <template slot-scope="scope">
-          <div class="del" @click="handleChange(scope.row[1].product.id, 0)">
-              <i class="iconfont icon-close"></i>
-          </div>
-        </template>
-      </el-table-column>
-    </el-table> -->
     </div>
     
 
@@ -154,9 +101,11 @@
 import { mapActions, mapGetters } from "vuex";
 import { getUrl } from "@/api/order";
 import MyAddress from "@c/common/address";
+import { mixin } from '@/utils/mixin.js'
 
 export default {
   components: { MyAddress },
+  mixins: [mixin],
   data() {
     return {
       userGoods: [],
@@ -178,9 +127,12 @@ export default {
       cart: "cart/cartList",
     }),
     cartSize() {
+      if(!this.$store.state.cart.cart) return 0
+      if(!this.$store.state.cart.cart.cartMap) return 0
       return Object.keys(this.$store.state.cart.cart.cartMap).length;
     },
     cartLength() {
+      if(!this.cart) return 0
       const arr = Object.entries(this.cart)
       return arr.reduce((pre, cur) => {
         if (cur[1].product.checked) {
@@ -191,6 +143,7 @@ export default {
     },
     // 总共金额
     getCount() {
+      if(!this.cart) return 0
       const arr = Object.entries(this.cart)
       
       // return 999
@@ -211,8 +164,8 @@ export default {
   mounted() {
     this.checkAll = this.valiteAll();
     this.online && this.getUserCart();
-    const data = this.$store.state.cart.cart.cartMap;
-    this.userGoods = Object.entries(data);
+    // const data = this.$store.state.cart.cart.cartMap;
+    // this.userGoods = Object.entries(data);
     this.getUserCart();
   },
   methods: {

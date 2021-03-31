@@ -79,8 +79,8 @@ export function PhoneCode(data) {
  */
 export function EditAccount(data) {
   return axios.request({
-    url: '/auth',
-    method: 'put',
+    url: '/user',
+    method: 'post',
     data
   })
 } 
@@ -117,4 +117,11 @@ export function Upload(data) {
     method: "post",
     data,
   });
+}
+
+export function getUserByToken(){
+  return axios.request({
+    url: "/user",
+    method: "get"
+  })
 }

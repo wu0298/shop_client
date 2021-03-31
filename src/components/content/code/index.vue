@@ -62,6 +62,7 @@ export default {
     // 点击发送验证码
     handlerSendCode() {
       if (this.isPass) {
+        console.log(this.mode);
         this.mode === "email" ? this.getEmailCode() : this.getPhoneCode();
       }
     },
@@ -72,6 +73,14 @@ export default {
       const data = {
         email: this.email,
         username: this.username
+      }
+      if(this.username == undefined || this.username == ""){
+        this.$message("请先输入用户名再获取验证码")
+        return
+      }
+      if(this.email == undefined || this.email == ""){
+        this.$message("请输入您的邮箱")
+        return
       }
       GetSms(data).then((res) => {
         this.$message("发送成功");

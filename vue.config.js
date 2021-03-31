@@ -5,6 +5,7 @@ function resolve(dir) {
 
 module.exports = {
   devServer: {
+    disableHostCheck: true,
     // proxy: {
     //   [process.env.VUE_APP_API]: {
     //     target: process.env.VUE_API_DEV_TARGET, //API服务器的地址

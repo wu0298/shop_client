@@ -12,7 +12,7 @@
           width="499.99px"
           height="499.99px"
           style="width: 100%"
-          :src="good.picture"
+          :src="getUrl(good.picture)"
           alt=""
         />
       </div>
@@ -78,9 +78,11 @@ import MyData from "china-area-data/data";
 import {getDetail} from "@/api/base.js"
 import { apiAddCart } from "@/api/cart.js"
 import { setCart } from '@/utils/storage';
+import { mixin } from '@/utils/mixin.js'
 
 export default {
   components: { MyDistpickedr },
+  mixins: [mixin],
   data() {
     return {
       isShow: true,
