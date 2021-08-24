@@ -24,7 +24,6 @@ export const mixin = {
     //根据相对链接获取服务器地址
     getUrl(url){
       if(!url) return null
-      console.log(url);
       const str = url.substr(0, 5)
       if(str == "//img") return url
       return `${this.$store.state.HOST}${url}`

@@ -6,6 +6,7 @@
         <MyCode
           style="margin-top: 10px"
           :username="val"
+          :email.sync="val"
           :mode="edit_options.mode"
           :isPass="edit_options.isPass"
           :code.sync="edit_options.code"
@@ -65,6 +66,7 @@ export default {
   watch: {
     val: {
       handler(newVal) {
+        this.$emit('update:value', newVal)
         if (this.edit_options.mode === "email") {
           this.edit_options.isPass = validateEmail(newVal) ? false : true;
         } else {

@@ -24,6 +24,7 @@ export default {
         address: "地址管理",
         mine: "修改个人信息",
         order: "订单管理",
+        cgInfo: "采购详情"
       },
     };
   },

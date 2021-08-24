@@ -112,6 +112,15 @@ export default [
           },
         ],
       },
+      {
+        path: "caigou",
+        name: "caigou",
+        component: () => import("@/views/caigou"),
+      },{
+        path: "cgInfo",
+        name: "cgInfo",
+        component: () => import("@/views/caigou/detail.vue"),
+      }
     ],
   },
   {

@@ -80,23 +80,43 @@ export default {
   /**
    *  this.$route.query  = {c: 1}
    */
-      console.log();
-      const queryData = {
-        url: `${this.options.requestUrl}?${key}=${this.$route.query[key]}&page=${this.page}`,
-        data: {
-          page: this.page,
-          [key]: this.$route.query[key], // style: 3
-        },
-      };
+      console.log(key, "打印传过来的key");
+      console.log(this.options.requestUrl, "打印传过来的url");
+      if(key != "search"){
+        const queryData = {
+          url: `${this.options.requestUrl}?${key}=${this.$route.query[key]}&page=${this.page}`,
+          data: {
+            page: this.page,
+            [key]: this.$route.query[key], // style: 3
+          },
+        };
 
-      /**
-       * 请求列表数据
-       */
-      getCategory(queryData).then((res) => {
-        const { data, total } = res.data;
-        this.goods = data;
-        this.total = total;
-      });
+        /**
+         * 请求列表数据
+         */
+        getCategory(queryData).then((res) => {
+          const { data, total } = res.data;
+          this.goods = data;
+          this.total = total;
+        });
+      }else{
+        const queryData = {
+          url: `${this.options.requestUrl}?page=${this.page}`,
+          data: {
+            page: this.page,
+          },
+        };
+
+        /**
+         * 请求列表数据
+         */
+        getCategory(queryData).then((res) => {
+          const { data, total } = res.data;
+          this.goods = data;
+          this.total = total;
+        });
+      }
+      
     },
 
     /* 换页 */

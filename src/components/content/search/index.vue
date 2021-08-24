@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <i class="iconfont icon-sousuokuang"></i>
-    <input type="text" v-model="keyword" placeholder="迷彩服" />
+    <input type="text" v-model="keyword" placeholder="请输入要搜索商品的名字" />
     <div class="search-btn" @click="search">搜索</div>
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
   methods: {
     /* 搜索 */
     search() {
+      console.log("我点击了搜索按钮", this.keyword);
       if (!this.keyword) return;
 
       /* 跳转搜索页面 */

@@ -1,11 +1,11 @@
 const state = {
   /* 分类 */
   category_type: [
-    { label: "粮油", value: 1 },
-    { label: "果蔬", value: 2 },
-    { label: "生鲜", value: 3 },
-    { label: "肉禽", value: 4 },
-    { label: "茶叶", value: 5 },
+    { label: "米类", value: 1 },
+    { label: "蔬菜", value: 2 },
+    { label: "禽类", value: 3 },
+    { label: "水果", value: 4 },
+    { label: "渔产", value: 5 },
   ]
 };
 

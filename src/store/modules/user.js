@@ -39,7 +39,7 @@ export default {
           //调用接口，获取登录后的数据
           const res = await Login(data)
 
-          if (res.code !== 200) return reject({ status: false });
+          if (res.code !== 200) return reject({ status: false , msg: res.msg}) ;
           const { token, user } = res.data;
 
           /* 设置 vuex 的 token 和 user */

@@ -20,7 +20,10 @@
             </p>
           </div>
           <div v-if="item.orderStatus == 0 || item.orderStatus == 7" class="refund" @click.stop="paymentGood()"><span>去支付</span></div>
-          <div v-else-if="item.orderStatus == 2" class="refund" @click.stop="ackGood(item.orderId)"><span>确认收货</span></div>
+          <div class="bbb" v-else-if="item.orderStatus == 2">
+            <div  class="refund" @click.stop="ackGood(item.orderId)"><span>确认收货</span></div>
+            <div  class="refun" @click.stop="handleRefun(item.orderId, item.orderStatus)"><span>申请退款</span></div>
+          </div>
           <div v-else-if="item.orderStatus == 5 || item.orderStatus == 6" @click.stop="" class="refund"><span>订单关闭</span></div>
           <div v-else class="refund" @click.stop="handleRefun(item.orderId, item.orderStatus)">申请退款</div>
           <div class="price">￥ {{ item.price }}</div>

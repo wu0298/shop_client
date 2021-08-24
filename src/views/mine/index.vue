@@ -46,7 +46,7 @@
       <el-form-item label="邮箱">
         <EditCode
           :isShow.sync="isShowEmail"
-          :value="form.email"
+          :value.sync="form.email"
           :options="emailOptions"
           @cb="onCallback"
         />
@@ -174,6 +174,7 @@ export default {
         if (res.code === 200) {
           this.$message("修改成功");
           this.$store.commit("user/SET_USER", res.data);
+          location.reload();
         }
       });
     },

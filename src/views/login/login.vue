@@ -160,7 +160,14 @@ export default {
         if (res.status) {
           await this.setCart()
           this.$router.push({ name: "home" });
+        }else{
+
         }
+      }).catch( res => {
+        this.$message({
+        message: res.msg,
+        type: 'error'
+      })
       });
     },
     /**

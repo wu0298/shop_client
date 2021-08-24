@@ -26,6 +26,9 @@
             <router-link tag="div" :to="{ name: 'order' }" class="op"
               >我的订单</router-link
             >
+            <router-link tag="div" :to="{ name: 'caigou' }" class="op"
+              >采购大厅</router-link
+            >
           </div>
           <!-- 未登录 -->
           <div v-else>

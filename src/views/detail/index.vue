@@ -56,7 +56,7 @@
         <!-- 购买 and 收藏 -->
         <div class="btn-box">
           <div class="sale-btn" @click="addCart()">添加至购物车</div>
-          <div class="favorite-btn">收藏</div>
+          <div class="favorite-btn" @click="tsVisible = true">投诉</div>
         </div>
       </div>
     </div>
@@ -69,6 +69,13 @@
         </div>
       </div>
     </div>
+    <el-dialog title="请输入投诉内容" :visible.sync="tsVisible" width="300px" center>
+        <el-input :rows="5" v-model="content" placeholder="投诉内容" type="textarea"></el-input>
+      <span slot="footer">
+        <el-button size="mini" @click="tsVisible = false">取消</el-button>
+        <el-button size="mini" @click="toushu">确定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -76,6 +83,7 @@
 import MyDistpickedr from "@c/content/distpickedr";
 import MyData from "china-area-data/data";
 import {getDetail} from "@/api/base.js"
+import {addTs} from "@/api/ts.js"
 import { apiAddCart } from "@/api/cart.js"
 import { setCart } from '@/utils/storage';
 import { mixin } from '@/utils/mixin.js'
@@ -86,6 +94,8 @@ export default {
   data() {
     return {
       isShow: true,
+      tsVisible: false,
+      content: '',
       address: {
         province: "",
         city: "",
@@ -161,6 +171,25 @@ export default {
         }
         setCart(res.data)
         this.$store.state.cart.cart = res.data
+      })
+    },
+    toushu(){
+      const obj = this.$store.state.user.user
+      const data = new URLSearchParams()
+      data.set('goodId', this.$route.query.id)
+      data.set('userId', obj.id)
+      data.set('userName', obj.name)
+      data.set('content', this.content)
+      addTs(data).then( res => {
+        if(res.code == 200) {
+          this.$message('投诉成功！')
+          this.tsVisible = false
+          this.content = ''
+        }else{
+          this.$message('投诉失败！')
+          this.tsVisible = false
+          this.content = ''
+        }
       })
     }
   },

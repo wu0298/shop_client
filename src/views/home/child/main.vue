@@ -24,13 +24,13 @@
 
     <!-- AD  -->
     <div class="ad">
-      <img width="1226" height="120" src="https://s3.ax1x.com/2020/12/09/rCPjET.jpg" />
+      <img width="1226" height="120" src="https://www.hualigs.cn/image/6082c6fc8e97a.jpg" />
     </div>
 
-    <!-- 粮油 -->
+    <!-- 米类 -->
     <div class="phone">
       <div class="top_title">
-        <h3 class="title">粮油</h3>
+        <h3 class="title">米类</h3>
         <div class="more" @click="handlerChange(1)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
 
@@ -56,13 +56,13 @@
 
     <!-- AD  -->
     <div class="ad">
-      <img width="1226" height="120" src="https://s3.ax1x.com/2020/12/09/rCFVLq.jpg" />
+      <img width="1226" height="120" src="https://ae01.alicdn.com/kf/Uac3cb82b58cc4fc98f2b2a8ae93deafa6.jpg" />
     </div>
 
-    <!-- 果蔬 -->
+    <!-- 蔬菜 -->
     <div class="phone">
       <div class="top_title">
-        <h3 class="title">果蔬</h3>
+        <h3 class="title">蔬菜</h3>
         <div class="more" @click="handlerChange(2)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">
@@ -87,13 +87,13 @@
 
     <!-- AD  -->
     <div class="ad">
-      <img width="1226" height="120" src="https://s3.ax1x.com/2020/12/09/rCkaBq.jpg" />
+      <img width="1226" height="120" src="https://s3.ax1x.com/2020/12/09/rCAJIK.jpg" />
     </div>
 
-    <!-- 生鲜 -->
+    <!-- 禽类 -->
     <div class="phone">
       <div class="top_title">
-        <h3 class="title">生鲜</h3>
+        <h3 class="title">禽类</h3>
         <div class="more" @click="handlerChange(3)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">
@@ -118,13 +118,13 @@
 
     <!-- AD  -->
     <div class="ad">
-      <img width="1226" height="120" src="https://s3.ax1x.com/2020/12/09/rCAJIK.jpg" />
+      <img width="1226" height="120" src="https://s3.ax1x.com/2020/12/09/rCFVLq.jpg" />
     </div>
 
-    <!-- 肉禽 -->
+    <!-- 水果 -->
     <div class="phone">
       <div class="top_title">
-        <h3 class="title">肉禽</h3>
+        <h3 class="title">水果</h3>
         <div class="more" @click="handlerChange(4)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">
@@ -149,13 +149,13 @@
 
     <!-- AD  -->
     <div class="ad">
-      <img width="1226" height="120" src="https://s3.ax1x.com/2020/12/09/rCEVOA.jpg" />
+      <img width="1226" height="120" src="https://www.hualigs.cn/image/6082cae428fe3.jpg" />
     </div>
 
-    <!-- 茶叶 -->
+    <!-- 渔产 -->
     <div class="phone">
       <div class="top_title">
-        <h3 class="title">茶叶</h3>
+        <h3 class="title">渔产</h3>
         <div class="more" @click="handlerChange(5)">查看全部<i class="iconfont icon-you"></i></div>
       </div>
       <div class="phone_show">

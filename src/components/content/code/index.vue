@@ -82,6 +82,7 @@ export default {
         this.$message("请输入您的邮箱")
         return
       }
+      this.$emit('update:email', this.email)
       GetSms(data).then((res) => {
         this.$message("发送成功");
       });

@@ -141,6 +141,7 @@ export default {
         发送请求修改地址 判断状态码是否为 200
         然后通过 $emit('cb', this.form) 修改父组件的数据
       */
+     console.log(this.form, "地址数据");
       EditAddress({ data: this.form }).then((res) => {
         if (res.code === 200) {
           this.$message('修改成功')

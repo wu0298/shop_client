@@ -76,6 +76,20 @@
     background: #ee2222;
   }
 }
+
+.refun{
+  position: absolute;
+  right: 50px;
+  bottom:-5px;
+  font-size: 12px;
+  transform: scale(.9);
+  color: #000612;
+  
+  z-index:2;
+  &:hover{
+    background: #ee2222;
+  }
+}
 .yes_refund {
   position: absolute;
   right: 50px;
